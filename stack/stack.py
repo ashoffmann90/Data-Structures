@@ -9,6 +9,8 @@ return elements in Last In First Out order.
    Make sure the Stack tests pass.
 3. What is the difference between using an array vs. a linked list when 
    implementing a Stack?
+   A linked list is a class, where you have to create the methods that it uses to access length, ad/remove elements, etc.
+   An array has built in methods.
 
 
 ### Stacks

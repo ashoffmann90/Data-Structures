@@ -20,9 +20,9 @@ Answer the following questions for each of the data structures you implemented a
 
 2. What is the runtime complexity of `enqueue` using a linked list? O(1)
 
-3. What is the runtime complexity of `dequeue` using a list? O(1)
+3. What is the runtime complexity of `dequeue` using a list? O(n)
 
-4. What is the runtime complexity of `dequeue` using a linked list? O(1)
+4. What is the runtime complexity of `dequeue` using a linked list? O(n)
 
 5. What is the runtime complexity of `len` using a list? O(1)
 
