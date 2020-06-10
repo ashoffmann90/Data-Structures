@@ -82,7 +82,6 @@ class DoublyLinkedList:
         if not self.head:
             return None
         # reassign the next and prev pointers, which is being done by the delete()
-        # WHY DOES THIS NOR WORK WITHOUT USING A VARIABLE???
         val = self.head.value
         self.delete(self.head)
         return val
@@ -172,7 +171,7 @@ class DoublyLinkedList:
     """Returns the highest value currently in the list"""
 
     def get_max(self):
-        # store the value
+        # store the current value
         value = self.head.value
         # store the current head
         current = self.head

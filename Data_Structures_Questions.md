@@ -50,17 +50,17 @@ Answer the following questions for each of the data structures you implemented a
 
 10. What is the runtime complexity of `DoublyLinkedList.delete`? O(1)
 
-    a. Compare the runtime of the doubly linked list's `delete` method with the worst-case runtime of the JS `Array.splice` method. Which method generally performs better? Doubly linked list Delete
+    a. Compare the runtime of the doubly linked list's `delete` method with the worst-case runtime of the JS `Array.splice` method. Which method generally performs better? Doubly linked list Delete (if you're removing from the head or tail it is O(1), if you're removing from the middle, you have to searhc through and then delete (making it an O(n)))
 
 ## Binary Search Tree
 
-1. What is the runtime complexity of `insert`? 
+1. What is the runtime complexity of `insert`? O(log2 n)
 
 2. What is the runtime complexity of `contains`? O(log2 n)
 
-3. What is the runtime complexity of `get_max`? 
+3. What is the runtime complexity of `get_max`? O(log2 n)
 
-4. What is the runtime complexity of `for_each`?
+4. What is the runtime complexity of `for_each`? O(n log n)
     
 ## Heap
 
