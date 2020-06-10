@@ -118,27 +118,35 @@ class DoublyLinkedList:
         value = self.tail.value
         # Use your delete method to remove that value
         self.delete(value)
-        # return that value
+        # return the value
         return value
 
     """Removes the input node from its current spot in the 
     List and inserts it as the new head node of the List."""
 
     def move_to_front(self, node):
+        # if the node is the head, return
         if node is self.head:
-            return
+            return None
+        # set the pre-delete node value to a variable
         value = node.value
+        # delete the node
         self.delete(node)
+        # add the pre-delete value to the head
         self.add_to_head(value)
 
     """Removes the input node from its current spot in the 
     List and inserts it as the new tail node of the List."""
 
     def move_to_end(self, node):
+        # if the node is the tail already, return none
         if node is self.tail:
-            return
+            return None
+        # store the pre-delete value
         value = node.value
+        # delete the node
         self.delete(node)
+        # move the node to the tail
         self.add_to_tail(value)
 
     """Removes a node from the list and handles cases where
@@ -146,13 +154,15 @@ class DoublyLinkedList:
 
     def delete(self, node):
         self.length -= 1
-
+        # if the head and the tail is the same, set the head and tail to None
         if self.head is self.tail:
             self.head = None
             self.tail = None
+        # if the node is the head, change it's next pointer, delete it
         elif node is self.head:
             self.head = node.next
             node.delete()
+        # if the node is the tail, change it's prev pointer, delete it
         elif node is self.tail:
             self.tail = node.prev
             node.delete()
@@ -162,11 +172,16 @@ class DoublyLinkedList:
     """Returns the highest value currently in the list"""
 
     def get_max(self):
+        # store the value
         value = self.head.value
+        # store the current head
         current = self.head
-
+        # while there is a head
         while current is not None:
+            # if the current value is greater than the initial stored value
             if current.value > value:
+                # set the initial value to the current value
                 value = current.value
+            # set the current head to the next pointer
             current = current.next
         return value
