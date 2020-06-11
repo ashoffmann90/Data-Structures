@@ -10,6 +10,8 @@ This part of the project comprises two days:
    on the BSTNode class.
 """
 
+from collections import deque
+
 
 class BSTNode:
     def __init__(self, value):
@@ -64,10 +66,11 @@ class BSTNode:
     # Return the maximum value found in the tree
 
     def get_max(self):
-        if self.right:
-            return self.right.get_max()
-        else:
-            return self.value
+        # if self.right:
+        #     return self.right.get_max()
+        # else:
+        #     return self.value
+        return self.right and self.right.get_max() or self.value
 
     # Call the function `fn` on the value of each node
 
@@ -79,27 +82,84 @@ class BSTNode:
         if self.right:
             self.right.for_each(fn)
 
-    # Part 2 -----------------------
+    def iter_depth_first_for_each(self, fn):
+        # with depth first traversal, there is acertain order to when we visit nodes: LIFO
+        # initialize a stack, to keep track of nodes visited
+        stack = []
+        # add the first node to our stack
+        stack.append(self)
+        # continue traversing until our stack is empty
+        while len(stack) > 0:
+            # pop off the stack
+            current_node = stack.pop()
+            # add its children to the stack
+            # add the right child first and left child second (to ensure the left is popped off the stack first)
+            if current_node.right:
+                stack.append(current_node.right)
+            if current_node.left:
+                stack.append(current_node.left)
+            # call the fn function on self.value
+            fn(self.value)
 
+    def iter_breadth_first_search(self, fn):
+        # breadth first traversal follows FIFO ordering of its nodes
+        # init a deque
+        q = deque()
+        # add first node to q
+        q.append(self)
+        while len(q) > 0:
+            current_node = q.popleft()
+            if current_node.left:
+                q.append(current_node.left)
+            if current_node.right:
+                q.append(current_node.right)
+            fn(self.value)
+
+    # Part 2 -----------------------
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
+
     def in_order_print(self, node):
-        pass
+        if node.left:
+            # how am I goig to get all the way left
+            node.left.in_order_print(node.left)
+        print(node.value)
+        if node.right:
+            node.right.in_order_print(node.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
+
     def bft_print(self, node):
-        pass
+        q = []
+        q.append(node)
+        while len(q) > 0:
+            current_node = q.pop(0)
+            print(current_node.value)
+            if current_node.left:
+                q.append(current_node.left)
+            if current_node.right:
+                q.append(current_node.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
+
     def dft_print(self, node):
-        pass
+        stack = []
+        stack.append(node)
+        while len(stack) > 0:
+            current_node = stack.pop()
+            print(current_node.value)
+            if current_node.right:
+                stack.append(current_node.right)
+            if current_node.left:
+                stack.append(current_node.left)
 
     # Stretch Goals -------------------------
     # Note: Research may be required
 
     # Print Pre-order recursive DFT
+
     def pre_order_dft(self, node):
         pass
 
